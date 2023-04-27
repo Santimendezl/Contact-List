@@ -16,7 +16,9 @@ const injectContext = PassedComponent => {
 				setStore: updatedStore =>
 					setState({
 						store: Object.assign(state.store, updatedStore),
-						actions: { ...state.actions }
+						actions: {
+							...state.actions
+						}
 					})
 			})
 		);
@@ -37,7 +39,7 @@ const injectContext = PassedComponent => {
 		// on the state of this component
 		return (
 			<Context.Provider value={state}>
-				<PassedComponent {...props} />
+				<PassedComponent {...props} />{" "}
 			</Context.Provider>
 		);
 	};
