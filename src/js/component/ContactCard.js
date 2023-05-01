@@ -8,7 +8,12 @@ export const ContactCard = props => {
 	const [state, setState] = useState({
 		//initialize state here
 	});
-	console.log(props);
+	const { actions } = useContext(Context);
+	//función evento borrar el contacto
+	function handleDelete(id) {
+		actions.borrarContacto(id);
+	}
+
 	return (
 		<li className="list-group-item">
 			<div className="row w-100">
@@ -20,7 +25,7 @@ export const ContactCard = props => {
 						<button className="btn">
 							<i className="fas fa-pencil-alt mr-3" />
 						</button>
-						<button className="btn" onClick={() => props.onDelete()}>
+						<button className="btn" onClick={handleDelete}>
 							<i className="fas fa-trash-alt" />
 						</button>
 					</div>
