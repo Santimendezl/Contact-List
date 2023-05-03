@@ -11,7 +11,8 @@ export const ContactCard = props => {
 	const { actions } = useContext(Context);
 	//función evento borrar el contacto
 	function handleDelete(id) {
-		actions.borrarContacto(id);
+		props.onDelete();
+		// actions.borrarContacto(id);
 	}
 
 	return (
@@ -25,7 +26,7 @@ export const ContactCard = props => {
 						<button className="btn">
 							<i className="fas fa-pencil-alt mr-3" />
 						</button>
-						<button className="btn" onClick={handleDelete}>
+						<button className="btn" onClick={() => handleDelete(props.id)}>
 							<i className="fas fa-trash-alt" />
 						</button>
 					</div>
@@ -65,7 +66,8 @@ ContactCard.propTypes = {
 	name: PropTypes.string,
 	phone: PropTypes.string,
 	email: PropTypes.string,
-	address: PropTypes.string
+	address: PropTypes.string,
+	id: PropTypes.string
 };
 
 /**
