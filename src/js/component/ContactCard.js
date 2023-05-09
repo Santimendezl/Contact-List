@@ -17,6 +17,7 @@ export const ContactCard = props => {
 	//función evento actualizar el contacto
 	function handleUpdate(id) {
 		props.onUpdate();
+		//Obtener el contacto a actualizar
 		console.log(id);
 	}
 
