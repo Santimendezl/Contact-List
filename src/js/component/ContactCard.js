@@ -14,6 +14,11 @@ export const ContactCard = props => {
 		props.onDelete();
 		// actions.borrarContacto(id);
 	}
+	//función evento actualizar el contacto
+	function handleUpdate(id) {
+		props.onUpdate();
+		console.log(id);
+	}
 
 	return (
 		<li className="list-group-item">
@@ -23,7 +28,7 @@ export const ContactCard = props => {
 				</div>
 				<div className="col-12 col-sm-6 col-md-9 text-center text-sm-left">
 					<div className=" float-right">
-						<button className="btn">
+						<button className="btn" onClick={() => handleUpdate(props.id)}>
 							<i className="fas fa-pencil-alt mr-3" />
 						</button>
 						<button className="btn" onClick={() => handleDelete(props.id)}>
@@ -67,7 +72,8 @@ ContactCard.propTypes = {
 	phone: PropTypes.string,
 	email: PropTypes.string,
 	address: PropTypes.string,
-	id: PropTypes.string
+	id: PropTypes.string,
+	onUpdate: PropTypes.func
 };
 
 /**
@@ -75,5 +81,6 @@ ContactCard.propTypes = {
  * your component's properties
  **/
 ContactCard.defaultProps = {
-	onDelete: null
+	onDelete: null,
+	onUpdate: null
 };

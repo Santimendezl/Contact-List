@@ -55,7 +55,7 @@ const getState = ({ getStore, setStore, getActions }) => {
 					agenda_slug: "santiml"
 				};
 
-				fetch("https://assets.breatheco.de/apis/fake/contact/", {
+				fetch("https://assets.breatheco.de/apis/fake/contact/" + id, {
 					method: "PUT",
 					body: JSON.stringify(data),
 					headers: {

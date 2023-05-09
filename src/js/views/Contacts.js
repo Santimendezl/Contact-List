@@ -2,9 +2,14 @@ import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import { ContactCard } from "../component/ContactCard.js";
 import { Modal } from "../component/Modal";
+import { ModalUpdate } from "../component/ModalUpdate.js";
 import { Context } from "../store/appContext.js";
 export const Contacts = () => {
 	const [state, setState] = useState({
+		showModal: false,
+		id: ""
+	});
+	const [updateModal, setUpdateModal] = useState({
 		showModal: false,
 		id: ""
 	});
@@ -36,16 +41,18 @@ export const Contacts = () => {
 								address={item.address}
 								id={item.id}
 								onDelete={() => setState({ showModal: true, id: item.id })}
+								onUpdate={() => setUpdateModal({ showModal: true, id: item.id })}
 							/>
 						))}
-						{/* <ContactCard onDelete={() => setState({ showModal: true })} />
-						<ContactCard />
-						<ContactCard />
-						<ContactCard /> */}
 					</ul>
 				</div>
 			</div>
 			<Modal show={state.showModal} id={state.id} onClose={() => setState({ showModal: false })} />
+			<ModalUpdate
+				show={updateModal.showModal}
+				id={updateModal.id}
+				onClose={() => setUpdateModal({ showModal: false })}
+			/>
 		</div>
 	);
 };
